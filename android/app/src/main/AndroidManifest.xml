@@ -83,7 +83,7 @@
 
     <!--<manifest xmlns:android="http://schemas.android.com/apk/res/android"-->
 <!--    xmlns:tools="http://schemas.android.com/tools"-->
-<!--    package="com.example.dispatch">-->
+<!--    package="com.dispatchsolutions.live">-->
 
 <!--    <uses-permission android:name="android.permission.INTERNET" />-->
 <!--    &lt;!&ndash; Camera permission &ndash;&gt;-->

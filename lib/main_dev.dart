@@ -11,7 +11,7 @@ void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   FlavorConfig(
     flavor: Flavor.DEV,
-    values: FlavorValues(baseUrl: "http://192.168.1.62:8008/"),
+    values: FlavorValues(baseUrl: "http://192.168.1.67:8008/"),
   );
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);

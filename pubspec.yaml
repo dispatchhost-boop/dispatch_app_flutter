@@ -65,11 +65,11 @@ flutter:
 #flavors:
 #  dev:
 #    name: "Development"
-#    package: "com.example.dispatch_dev"
+#    package: "com.dispatchsolutions.live_dev"
 #    appname: "Dispatch Dev"
 #    description: "Development build of the app"
 #  prod:
 #    name: "Production"
-#    package: "com.example.dispatch"
+#    package: "com.dispatchsolutions.live"
 #    appname: "Dispatch"
 #    description: "Production build of the app"

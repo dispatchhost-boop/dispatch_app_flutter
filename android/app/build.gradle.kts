@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-//    namespace = "com.example.dispatch"
+//    namespace = "com.dispatchsolutions.live"
     namespace = "com.dispatchsolutions.live"
     compileSdk = 36
     ndkVersion = "27.0.12077973"
@@ -21,7 +21,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-//        applicationId = "com.example.dispatch"
+//        applicationId = "com.dispatchsolutions.live"
         applicationId = "com.dispatchsolutions.live"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
@@ -65,14 +65,14 @@ android {
     productFlavors {
         create("dev") {
             dimension = "env"
-//            applicationId = "com.example.dispatch_dev"
+//            applicationId = "com.dispatchsolutions.live_dev"
             applicationId = "com.dispatchsolutions.dev"
             versionNameSuffix = "-dev"
             resValue("string", "app_name", "Dispatch Dev")
         }
         create("prod") {
             dimension = "env"
-//            applicationId = "com.example.dispatch"
+//            applicationId = "com.dispatchsolutions.live"
             applicationId = "com.dispatchsolutions.live"
             resValue("string", "app_name", "Dispatch")
         }

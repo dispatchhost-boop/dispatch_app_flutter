@@ -103,6 +103,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen>
     Widget targetScreen;
 
     if (isNotFirst) {
+      DebugConfig.debugLog('On not kyc000112 :: ${userAuth.token}');
       if (userAuth.token != null && userAuth.token!.isNotEmpty) {
         DebugConfig.debugLog('On not kyc000 :: ${userAuth.isKycVerified} and ${userAuth.isKycVerified.runtimeType}');
         if (userAuth.isKycVerified != 1) { // ==

@@ -25,7 +25,7 @@ class LoginViewModel{
     if(res != null){
       if(res.token != null && res.token!.isNotEmpty){
         CommonMethods.showSnackBar(title: 'Success', message: res.message ?? '');
-        LoginCredentials().saveToken(res.token ?? '');
+        await LoginCredentials().saveToken(res.token ?? '');
         await UserAuthentication().loadTokenFromStorage();
         // DebugConfig.debugLog('Logintoken : ${await LoginCredentials().getToken()}');
         if(res.isKycVerified == 1){

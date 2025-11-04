@@ -41,6 +41,32 @@ class _DigioKycHomeState extends ConsumerState<DigioKycHome> {
       Permission.microphone,
       Permission.location,
     ].request();
+    statuses.forEach((permission, status) {
+      debugPrint('Permission $permission: $status');
+    });
+    if (statuses.values.any((status) => status.isPermanentlyDenied)) {
+      showDialog(
+        context: context,
+        builder: (_) => AlertDialog(
+          title: Text('Permissions Required'),
+          content: Text(
+              'Camera, Microphone, and Location permissions are required. '
+                  'Please enable them in Settings.'
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+                openAppSettings();
+              },
+              child: Text('Open Settings'),
+            ),
+          ],
+        ),
+      );
+      return false;
+    }
+
     return statuses.values.every((e) => e.isGranted);
   }
 
@@ -153,21 +179,27 @@ class _DigioKycHomeState extends ConsumerState<DigioKycHome> {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () async {
-                final kycCredentials = MySharedPreferences.getMap(DIGIO_KYC_CREDENTIALS);
-                if(kycCredentials.isNotEmpty){
-                  DebugConfig.debugLog('Kyc Credentials is not Empty');
-                  await _startKycProcess(kycCredentials);
-                }else{
-                  DebugConfig.debugLog('Kyc Credentials is Empty');
-                  CheckKycStatusModel? res = await _vm.getKycStatus(loaderRef: ref);
-                  DebugConfig.debugLog('KYC ka statuses111 :: $res');
-                  if(res != null && res.id != null && res.id!.isNotEmpty && res.referenceId != null && res.referenceId!.isNotEmpty && res.referenceId != null && res.referenceId!.isNotEmpty){
-                    DebugConfig.debugLog('KYC ka statuses :: $res');
-                    Map<String, dynamic> data = {"documentId": res.accessToken?.entityId ?? '', "token": res.accessToken?.id ?? '', "userIdentifier": res.customerIdentifier ?? '', };
-                    MySharedPreferences.setMap(DIGIO_KYC_CREDENTIALS, data);
-                    await _startKycProcess(data);
-                  }
-                }
+                // final kycCredentials = MySharedPreferences.getMap(DIGIO_KYC_CREDENTIALS);
+                // if(kycCredentials.isNotEmpty){
+                //   DebugConfig.debugLog('Kyc Credentials is not Empty');
+                //   await _startKycProcess(kycCredentials);
+                // }else{
+                //   DebugConfig.debugLog('Kyc Credentials is Empty');
+                //   CheckKycStatusModel? res = await _vm.getKycStatus(loaderRef: ref);
+                //   DebugConfig.debugLog('KYC ka statuses111 :: $res');
+                //   if(res != null && res.id != null && res.id!.isNotEmpty && res.referenceId != null && res.referenceId!.isNotEmpty && res.referenceId != null && res.referenceId!.isNotEmpty){
+                //     DebugConfig.debugLog('KYC ka statuses :: $res');
+                //     Map<String, dynamic> data = {"documentId": res.accessToken?.entityId ?? '', "token": res.accessToken?.id ?? '', "userIdentifier": res.customerIdentifier ?? '', };
+                //     MySharedPreferences.setMap(DIGIO_KYC_CREDENTIALS, data);
+                //     Future.delayed(Duration(milliseconds: 200), () async => await _startKycProcess(data));
+                //     // await _startKycProcess(data);
+                //   }
+                // }
+                const documentId = "KTP250926164752173CWJW1IC2QAOSU4";
+                // const documentId = "KID250926161859473SU4I8RNGOQ9ZTI";
+                const token = "CRN250926161859473J7";
+                const userIdentifier = "pulkit.tyagi@corewebconnections.com";
+                Future.delayed(Duration(milliseconds: 200), () async => await _startKycProcess({"documentId" : documentId, "token" : token, "userIdentifier" : userIdentifier,}));
               },
               child: const Text("Start Kyc"),
             ),
