@@ -1,0 +1,70 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.0.3 effective-5.10 (swiftlang-6.0.3.1.10 clang-1600.0.30.1)
+// swift-module-flags: -target arm64-apple-ios12.1 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-bare-slash-regex -module-name DigioEsignSDK
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface
+@_exported import DigioEsignSDK
+import Foundation
+import JavaScriptCore
+import Swift
+import SwiftUI
+import UIKit
+import WebKit
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+@_hasMissingDesignatedInitializers public class DigioUtils {
+  public static func getUrlForIntent(scheme: Swift.String?, deepLinkUrl: Swift.String?) -> Swift.String
+  public static func fromNSDictionary<T>(_ dictionary: Foundation.NSDictionary, type: T.Type) throws -> T where T : Swift.Decodable, T : Swift.Encodable
+  public static func fromJSONData<T>(_ data: Foundation.Data, type: T.Type) throws -> T where T : Swift.Decodable, T : Swift.Encodable
+  public static func toJSONData<T>(_ x: T) throws -> Foundation.Data where T : Swift.Decodable, T : Swift.Encodable
+  public static func toNSDictionary<T>(_ x: T) throws -> Foundation.NSDictionary where T : Swift.Decodable, T : Swift.Encodable
+  public static func readJsonString<T>(_ jsonString: Swift.String, type: T.Type) -> T? where T : Swift.Decodable, T : Swift.Encodable
+  @objc deinit
+}
+public class DigioBuilder {
+  public init()
+  public func setLogo(logo: Swift.String?) -> DigioEsignSDK.DigioBuilder
+  public func setEnvironment(environment: DigioEsignSDK.DigioEnvironment) -> DigioEsignSDK.DigioBuilder
+  public func setDocumentId(documentId: Swift.String) -> DigioEsignSDK.DigioBuilder
+  public func setIdentifier(identifier: Swift.String) -> DigioEsignSDK.DigioBuilder
+  public func setTokenId(tokenId: Swift.String?) -> DigioEsignSDK.DigioBuilder
+  public func withController(viewController: UIKit.UIViewController) -> DigioEsignSDK.DigioBuilder
+  public func setServiceMode(serviceMode: DigioEsignSDK.DigioServiceMode) -> DigioEsignSDK.DigioBuilder
+  public func setPrimaryColor(hexColor: Swift.String) -> DigioEsignSDK.DigioBuilder
+  public func setFontFormat(fontFormat: Swift.String) -> DigioEsignSDK.DigioBuilder
+  public func setFontFamily(fontFamily: Swift.String) -> DigioEsignSDK.DigioBuilder
+  public func setFontUrl(fontUrl: Swift.String) -> DigioEsignSDK.DigioBuilder
+  public func setDelegate(delegate: any DigioEsignSDK.DigioEsignDelegate) -> DigioEsignSDK.DigioBuilder
+  public static func getCurrentSdkVersion() -> Swift.String
+  public func setAdditionalParams(additionalParams: [Swift.String : Swift.String]) -> DigioEsignSDK.DigioBuilder
+  public func build()
+  @objc deinit
+}
+public enum DigioServiceMode : Swift.String {
+  case OTP
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum DigioEnvironment : Swift.String {
+  case PRODUCTION
+  case SANDBOX
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public protocol DigioEsignDelegate {
+  func onDigioResponseSuccess(response: Swift.String)
+  func onDigioResponseFailure(response: Swift.String)
+  func onGatewayEvent(event: Swift.String)
+}
+extension DigioEsignSDK.DigioServiceMode : Swift.Equatable {}
+extension DigioEsignSDK.DigioServiceMode : Swift.Hashable {}
+extension DigioEsignSDK.DigioServiceMode : Swift.RawRepresentable {}
+extension DigioEsignSDK.DigioEnvironment : Swift.Equatable {}
+extension DigioEsignSDK.DigioEnvironment : Swift.Hashable {}
+extension DigioEsignSDK.DigioEnvironment : Swift.RawRepresentable {}

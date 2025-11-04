@@ -1,0 +1,3 @@
+package libraries.kyc_workflow.android
+
+rootProject.name = 'kyc_workflow'

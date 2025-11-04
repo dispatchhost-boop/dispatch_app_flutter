@@ -1,0 +1,115 @@
+package libraries.kyc_workflow.example.android.app
+
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    id "kotlin-kapt"
+    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file('local.properties')
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.withReader('UTF-8') { reader ->
+        localProperties.load(reader)
+    }
+}
+
+def flutterRoot = localProperties.getProperty('flutter.sdk')
+if (flutterRoot == null) {
+    throw new GradleException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
+}
+
+def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
+if (flutterVersionCode == null) {
+    flutterVersionCode = '1'
+}
+//
+def flutterVersionName = localProperties.getProperty('flutter.versionName')
+if (flutterVersionName == null) {
+    flutterVersionName = '1.0'
+}
+
+android {
+    if (project.android.hasProperty("namespace")) {
+        namespace = "com.digio.kyc_workflow_example"
+    }
+    compileSdk = 35
+//    ndkVersion flutter.ndkVersion
+    ndkVersion = "25.1.8937393"
+    compileOptions {
+//        sourceCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+//        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+//        jvmTarget = '1.8'
+        jvmTarget = '17'
+    }
+//3.27.4
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+
+    defaultConfig {
+        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+        applicationId "com.digio.kyc_workflow_example"
+        // You can update the following values to match your application needs.
+        // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-build-configuration.
+        minSdkVersion 24
+        targetSdkVersion 35
+//        targetSdkVersion flutter.targetSdkVersion
+        versionCode flutter.versionCode
+//        versionCode flutterVersionCode.toInteger()
+//        versionName flutterVersionName
+        versionName flutter.versionName
+    }
+
+   /* signingConfigs {
+        debug {
+            keyAlias 'digio'
+            keyPassword '2aeff9f1b03c15faff7ac08f002b3fa055122f14'
+            storeFile file('./keystore/digio.jks')
+            storePassword '2aeff9f1b03c15faff7ac08f002b3fa055122f14'
+        }
+        release {
+            keyAlias 'digio'
+            keyPassword '2aeff9f1b03c15faff7ac08f002b3fa055122f14'
+            storeFile file('./keystore/digio.jks')
+            storePassword '2aeff9f1b03c15faff7ac08f002b3fa055122f14'
+        }
+    }*/
+
+    buildTypes {
+        release {
+            // TODO: Add your own signing config for the release build.
+            // Signing with the debug keys for now, so `flutter run --release` works.
+            signingConfig = signingConfigs.debug
+//            minifyEnabled true
+//            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            signingConfig = signingConfigs.debug
+//            minifyEnabled true
+        }
+    }
+    buildFeatures {
+        viewBinding = true
+        dataBinding = true
+
+    }
+
+}
+
+flutter {
+    source '../..'
+}
+
+dependencies {
+//    implementation fileTree(dir: "libs", include: ["*.aar"])
+    implementation 'com.github.digio-tech:protean-esign:v3.2'
+}

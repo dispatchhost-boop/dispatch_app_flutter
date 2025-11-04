@@ -1,0 +1,22 @@
+PODS:
+  - Flutter (1.0.0)
+  - kyc_workflow (1.2.8):
+    - Flutter
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - kyc_workflow (from `.symlinks/plugins/kyc_workflow/ios`)
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  kyc_workflow:
+    :path: ".symlinks/plugins/kyc_workflow/ios"
+
+SPEC CHECKSUMS:
+  Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
+  kyc_workflow: 8b0cf131e8099b9353e39e29f5c102b92a8b003c
+
+PODFILE CHECKSUM: c4c93c5f6502fe2754f48404d3594bf779584011
+
+COCOAPODS: 1.16.2
