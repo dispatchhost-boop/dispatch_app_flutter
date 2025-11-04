@@ -57,7 +57,6 @@ class MyApp extends StatelessWidget {
         '/login': (context) => LogInScreen(),
         '/dashboard': (context) => DashboardScreen(),
         '/live_detection': (context) => FaceDetectorScreen(),
-        // '/digio_kyc': (context) => DigioKycDashboard(),
       },
       initialRoute: initialRoute,
       // builder: (context, child) {

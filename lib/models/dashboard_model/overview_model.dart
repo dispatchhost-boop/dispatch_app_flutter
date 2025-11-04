@@ -346,8 +346,8 @@ class ValueJsonResponse {
 }
 
 class TodayValue {
-  dynamic value;
-  dynamic change;
+  int? value;
+  int? change;
   dynamic percentage;
 
   TodayValue({this.value, this.change, this.percentage});

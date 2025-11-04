@@ -2,6 +2,7 @@ import 'package:dispatch/const/debug_config.dart';
 import 'package:dispatch/prefs/share_pref.dart';
 import 'package:dispatch/views/dashboard/dashboard_screen.dart';
 import 'package:dispatch/views/intro/intro_screen.dart';
+import 'package:dispatch/views/kyc_form/kyc_dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'dart:math' as math;
@@ -9,7 +10,6 @@ import '../../prefs/share_pref_keys.dart';
 import '../../services/login_credentials/user_authentications.dart';
 import '../../view_model/splash_vm.dart';
 import '../auth/login_screen.dart';
-import '../digio_kyc/digio_kyc_home.dart';
 
 
 class SplashScreen extends ConsumerStatefulWidget {
@@ -104,28 +104,11 @@ class _SplashScreenState extends ConsumerState<SplashScreen>
 
     if (isNotFirst) {
       if (userAuth.token != null && userAuth.token!.isNotEmpty) {
-        DebugConfig.debugLog('On not kyc000 :: ${userAuth.isKycVerified} and ${userAuth.isKycVerified.runtimeType}');
-        if (userAuth.isKycVerified != 1) { // ==
-          targetScreen = DashboardScreen();
-        } else {
-          // DebugConfig.debugLog('On not kyc1');
-          // final loginVm = LoginViewModel(ref);
-          // CheckKycStatusModel? res = await loginVm.getKycStatus(loaderRef: ref);
-          //
-          // if(res != null && res.templateId != null && res.templateId!.isNotEmpty){
-            targetScreen = DigioKycHome();
-          //   // targetScreen = DigioKycHome(
-          //   //   docDetails: {
-          //   //   "documentId": res.templateId ?? '',
-          //   //   "token": res.referenceId ?? '',
-          //   //   "userIdentifier": res.customerIdentifier ?? ''
-          //   // },
-          //   // ); // KycDashboard(); //DashboardScreen(); //
-          // }else{
-          // DebugConfig.debugLog('On not kyc2');
-          //   targetScreen = LogInScreen();
-          // }
-        }
+        // if (userAuth.isKycVerified == true) {
+        //   targetScreen = DashboardScreen();
+        // } else {
+          targetScreen = KycDashboard();
+        // }
       } else {
         targetScreen = LogInScreen();
       }

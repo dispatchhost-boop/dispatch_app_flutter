@@ -27,7 +27,7 @@ class SignInModel {
   dynamic segmentType;
   String? redirectReason;
   String? token;
-  int? isKycVerified;
+  bool? isKycVerified;
 
   SignInModel(
       {this.message,

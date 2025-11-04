@@ -1,13 +1,14 @@
 import 'package:dispatch/const/common_methods.dart';
+import 'package:dispatch/const/debug_config.dart';
 import 'package:dispatch/models/auth_model/sign_in_model.dart';
 import 'package:dispatch/services/login_credentials/login_credentials.dart';
 import 'package:dispatch/services/login_credentials/user_authentications.dart';
 import 'package:dispatch/views/dashboard/dashboard_screen.dart';
+import 'package:dispatch/views/kyc_form/kyc_dashboard.dart';
+import 'package:dispatch/views/kyc_form/kyc_doc.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
-import '../../models/auth_model/check_kyc_status_model.dart';
 import '../../repositories/auth_repo/sign_in_repo.dart';
-import '../../views/digio_kyc/digio_kyc_home.dart';
 
 class LoginViewModel{
   late SignInScreenRepo _repo;
@@ -28,45 +29,16 @@ class LoginViewModel{
         LoginCredentials().saveToken(res.token ?? '');
         await UserAuthentication().loadTokenFromStorage();
         // DebugConfig.debugLog('Logintoken : ${await LoginCredentials().getToken()}');
-        if(res.isKycVerified == 1){
-          Get.off(()=> DashboardScreen());
-          // await getKycStatus(loaderRef: loaderRef);
-          // Get.off(()=> KycDashboard());
+        if(res.isKycVerified == false){
+          Get.off(()=> KycDashboard());
           // Get.to(()=> KycDocumentsScreen());
         }else{
-          Get.off(()=> DigioKycHome());
+          Get.off(()=> DashboardScreen());
         }
       }
 
     }
       return res;
   }
-
-  // Future<CheckKycStatusModel?> getKycStatus({required WidgetRef loaderRef}) async {
-  //
-  //   CheckKycStatusModel? res = await _repo.getKycStatus(loaderRef: loaderRef);
-  //   if(res != null){
-  //     // if(res. != null && res.token!.isNotEmpty){
-  //       CommonMethods.showSnackBar(title: 'Success Kyc', message: res.customerIdentifier ?? '');
-  //     //   LoginCredentials().saveToken(res.token ?? '');
-  //     //   await UserAuthentication().loadTokenFromStorage();
-  //     //   // DebugConfig.debugLog('Logintoken : ${await LoginCredentials().getToken()}');
-  //     //   if(res.isKycVerified == false){
-  //     //
-  //     //     // Get.off(()=> KycDashboard());
-  //     //     // Get.to(()=> KycDocumentsScreen());
-  //     //   // }else{
-  //     //   //   Get.off(()=> DashboardScreen());
-  //     //   // }
-  //     // }
-  //
-  //     if(res.id != null && res.id!.isNotEmpty && res.referenceId != null && res.referenceId!.isNotEmpty && res.referenceId != null && res.referenceId!.isNotEmpty){
-  //       // Get.to(()=> DigioKycDashboard());
-  //       Get.to(()=> DigioKycHome(docDetails: {"documentId": res.id ?? '', "token": res.referenceId ?? '', "userIdentifier": res.referenceId ?? '', },));
-  //     }
-  //
-  //   }
-  //   return res;
-  // }
 
 }

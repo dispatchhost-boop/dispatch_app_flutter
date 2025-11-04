@@ -1,9 +1,7 @@
 import 'package:dispatch/const/debug_config.dart';
-import 'package:dispatch/prefs/share_pref.dart';
 import 'package:dispatch/services/login_credentials/user_authentications.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
-import '../../prefs/share_pref_keys.dart';
 import '../../views/auth/login_screen.dart';
 
 class LoginCredentials {
@@ -30,9 +28,6 @@ class LoginCredentials {
     // DebugConfig.debugLog('Token before logout $tokenBefore');
     await LoginCredentials().deleteToken();
     await UserAuthentication().loadTokenFromStorage();
-    final isFirstTime = MySharedPreferences.getBool(FIRST_TIME_OPEN);
-    MySharedPreferences.removeAll();
-    MySharedPreferences.setBool(FIRST_TIME_OPEN, isFirstTime);
     // final tokenAfter = await LoginCredentials().getToken();
     // DebugConfig.debugLog('Token after logout $tokenAfter');
     Get.offAll(() => LogInScreen());//ZC1vcmRlciIsImVzaG9wLWludGVncmF0aW9uIiwiYWx

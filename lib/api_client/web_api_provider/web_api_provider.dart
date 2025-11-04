@@ -2,7 +2,6 @@ import 'dart:io';
 import 'package:dispatch/api_client/api_method.dart';
 import 'package:dispatch/api_client/api_url.dart';
 import 'package:dispatch/const/debug_config.dart';
-import 'package:dispatch/models/auth_model/check_kyc_status_model.dart';
 import 'package:dispatch/models/auth_model/sign_in_model.dart';
 import 'package:dispatch/models/dashboard_model/shipment_model.dart';
 import 'package:dispatch/models/kyc_model/client_kyc_data_model.dart';
@@ -269,21 +268,6 @@ class WebApiProvider {
       return dataModel;
     }else{
       return null;
-    }
-  }
-
-  Future<CheckKycStatusModel?> getKycStatus({required WidgetRef loaderRef}) async {
-        final response = await ApiMethods.getGetApi(
-                        url: ApiUrl.checkKycStatus,
-                        loaderRef: loaderRef,
-                        );
-
-        DebugConfig.debugLog('Check KYC Response :: $response');
-        if (response != null) {
-          CheckKycStatusModel dataModel = CheckKycStatusModel.fromJson(response.data);
-          return dataModel;
-        }else{
-          return null;
     }
   }
 

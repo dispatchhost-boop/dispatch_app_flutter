@@ -43,13 +43,9 @@ class MySharedPreferences {
 
   // 🌟 Retrieve a Map from JSON string
   static Map<String, dynamic> getMap(String key) {
-    String? jsonString = _prefs?.getString(key);
-    if (jsonString == null || jsonString.isEmpty) {
-      return {}; // return empty map if nothing stored
-    }
-    return jsonDecode(jsonString);
+    String? jsonString = _prefs?.getString(key); // Return empty map if null
+    return jsonDecode(jsonString ?? ''); // Convert String back to Map
   }
-
 
   static remove(String key) {
     return _prefs!.remove(key);

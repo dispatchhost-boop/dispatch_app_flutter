@@ -97,7 +97,6 @@ class ApiMethods {
 
         final token = await LoginCredentials().getToken();
 
-        DebugConfig.debugLog('Tokendf xaya :: $token');
         final res = await _dio.get(
           url,
           options: dio.Options(

@@ -16,5 +16,4 @@ class ApiUrl{
   static String clientChange = "${baseUrl}auth/change-client";
   static String clientKycData = "${baseUrl}api/kyc/userdata";
   static String submitKycData = "${baseUrl}submit-kyc";
-  static String checkKycStatus = "${baseUrl}digio/send-request";
 }

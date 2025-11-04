@@ -59,7 +59,7 @@ class UserAuthentication {
   String? get lastName => _decodedToken?['last_name'];
   String? get companyName => _decodedToken?['company_name'];
   String? get logoPath => _decodedToken?['logo_path'];  // ✅ fixed
-  int? get isKycVerified => _decodedToken?['is_kyc_verified'];
+  bool? get isKycVerified => _decodedToken?['is_kyc_verified'];
   int? get selectedClientId => _decodedToken?['selectedClientId'];
 
   /// Roles list

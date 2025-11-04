@@ -1,4 +1,4 @@
-package com.dispatchsolutions.live
+package com.example.dispatch
 
 import io.flutter.embedding.android.FlutterActivity
 
