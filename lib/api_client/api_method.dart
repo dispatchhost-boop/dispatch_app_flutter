@@ -57,6 +57,7 @@ class ApiMethods {
         DebugConfig.debugLog('Status Code success : ${res.statusCode}');
         return res;
       }on dio.DioException catch(e){
+        DebugConfig.debugLog('Status Code error11 : ${e.toString()}');
         DebugConfig.debugLog('Status Code error : ${e.response?.statusCode}');
         if (e.response != null) {
           // String msg = e.response?.data['message'].toString().replaceAll('{', '').replaceAll('}', '') ?? '';

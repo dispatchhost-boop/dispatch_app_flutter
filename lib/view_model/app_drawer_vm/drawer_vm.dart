@@ -2,6 +2,7 @@ import 'package:dispatch/models/client_change_model.dart';
 import 'package:dispatch/repositories/app_drawer_repo/drawer_repo.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../repositories/app_drawer_repo/drawer_repo.dart';
 import '../../services/login_credentials/user_authentications.dart';
 
 class AppDrawerViewModel{

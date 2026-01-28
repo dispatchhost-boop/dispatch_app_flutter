@@ -24,7 +24,7 @@ class LoginViewModel{
     SignInModel? res = await _repo.onSignInAccount(loaderRef: loaderRef, body: body);
     if(res != null){
       if(res.token != null && res.token!.isNotEmpty){
-        CommonMethods.showSnackBar(title: 'Success', message: res.message ?? '');
+        // CommonMethods.showSnackBar(title: 'Success', message: res.message ?? '');
         LoginCredentials().saveToken(res.token ?? '');
         await UserAuthentication().loadTokenFromStorage();
         // DebugConfig.debugLog('Logintoken : ${await LoginCredentials().getToken()}');
@@ -36,6 +36,13 @@ class LoginViewModel{
         }else{
           Get.off(()=> DigioKycHome());
         }
+        // show snackbar AFTER navigation
+        Future.delayed(const Duration(milliseconds: 100), () {
+          CommonMethods.showSnackBar(
+            title: 'Success',
+            message: res.message ?? 'Login successful',
+          );
+        });
       }
 
     }

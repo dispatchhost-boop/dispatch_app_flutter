@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
+import '../my_app.dart';
 import 'app_colors.dart';
 import 'app_strings.dart';
 
@@ -28,19 +29,51 @@ class CommonMethods{
     return null;
   }
 
-  static showSnackBar({required String title, required String message}){
-    return Get.snackbar(
-      title, // title
-      message, // message
-      snackPosition: SnackPosition.TOP, // show at top
-      backgroundColor: AppColors.mainClr,
-      colorText: AppColors.white,
-      borderRadius: 8,
-      margin: EdgeInsets.all(10),
-      duration: Duration(seconds: 2),
-      icon: Icon(Icons.check_circle, color: Colors.white),
+  static void showSnackBar({
+    required String title,
+    required String message,
+  }) {
+    scaffoldMessengerKey.currentState?.showSnackBar(
+      SnackBar(
+        backgroundColor: AppColors.mainClr,
+        duration: const Duration(seconds: 2),
+        content: Row(
+          children: [
+            const Icon(Icons.check_circle, color: Colors.white),
+            const SizedBox(width: 10),
+            Expanded(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(title,
+                      style: const TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold)),
+                  Text(message,
+                      style: const TextStyle(color: Colors.white)),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
+
+  // static showSnackBar({required String title, required String message}){
+  //   return Get.rawSnackbar(
+  //     title: title, // title
+  //     message: message, // message
+  //     snackPosition: SnackPosition.TOP, // show at top
+  //     backgroundColor: AppColors.mainClr,
+  //     // colorText: AppColors.white,
+  //     borderRadius: 8,
+  //     margin: EdgeInsets.all(10),
+  //     duration: Duration(seconds: 2),
+  //     icon: Icon(Icons.check_circle, color: Colors.white),
+  //   );
+  // }
 
   static PreferredSizeWidget onAppBar({required String text}){
     return AppBar(

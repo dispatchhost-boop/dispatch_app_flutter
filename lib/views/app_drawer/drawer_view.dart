@@ -14,6 +14,7 @@ import '../../const/app_colors.dart';
 import '../../const/common_widget.dart';
 import '../../const/loader/loader_controller.dart';
 import '../../models/dashboard_model/client_list_model.dart';
+import '../../view_model/app_drawer_vm/drawer_vm.dart';
 
 class AppDrawer extends ConsumerWidget {
   final DashboardScreenViewModel dashboardVm;
@@ -67,7 +68,7 @@ class AppDrawer extends ConsumerWidget {
           // ),
 
           if(clientsList != null)
-            Container(
+          Container(
               padding: EdgeInsets.symmetric(vertical: 12),
               decoration: BoxDecoration(
                 color: Colors.lightBlue.shade100

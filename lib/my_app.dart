@@ -24,6 +24,9 @@ import 'package:dispatch/services/live_face_detection/live_face_detect.dart';
 //   });
 // }
 
+final GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey =
+GlobalKey<ScaffoldMessengerState>();
+
 class MyApp extends StatelessWidget {
   final String initialRoute;
 
@@ -33,6 +36,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      scaffoldMessengerKey: scaffoldMessengerKey,
       title: 'Dispatch App',
       debugShowCheckedModeBanner: kDebugMode ? true : false,
       theme: ThemeData(
